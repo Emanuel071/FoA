@@ -1,4 +1,5 @@
 from email import header
+from sqlite3 import paramstyle
 import sys
 from urllib import request
 import boto3
@@ -36,15 +37,21 @@ args = getResolvedOptions(sys.argv,
     'pw'    
 ])
 
+
+
 api_url = "https://api.yelp.com/v3/businesses/search"
+# set up parameter dictionary according to documentation 
+params = {"term": "bookstore",
+            "location": "San Francisco"}
+
+# Set up header dictionary w/ API Key according to documentation
+headers = {"authorization": "Bearer {}".format(api_key)}
 
 # Get data about NYC cafes from the Yelp API
-response = requests.get
+response = requests.get(api_url, headers=headers, params=params)
 
 sc = SparkContext()
-hc = HiveContext(sc)
 sqlContext = SQLContext(sc)
-gc = GlueContext(sc)
 
 sparkSession = SparkSession \
                     .builder \
@@ -110,10 +117,10 @@ print('DONE')
 job.commit()
 
 
-From: Calderon, Emanuel A 
-Sent: Wednesday, February 23, 2022 7:42 AM
-To: 'ecalde11@jh.edu' <ecalde11@jh.edu>
-Subject: neo4j
+# From: Calderon, Emanuel A 
+# Sent: Wednesday, February 23, 2022 7:42 AM
+# To: 'ecalde11@jh.edu' <ecalde11@jh.edu>
+# Subject: neo4j
 
 import sys
 import boto3
@@ -217,14 +224,3 @@ print('DONE')
 job.commit()
 
 
-Thank You,
- 
-Emanuel Calderon | Data Engineer in Corporate & Shared Systems | Travelers
-Tower Square, One| Hartford, CT 06183
-: 860.594.9824 |: ecalder@travelers.com
-  
-
-________________________________________
-This message (including any attachments) may contain confidential, proprietary, privileged and/or private information. The information is intended to be for the use of the individual or entity designated above. If you are not the intended recipient of this message, please notify the sender immediately, and delete the message and any attachments. Any disclosure, reproduction, distribution or other use of this message or any attachments by an individual or entity other than the intended recipient is prohibited.
-
-TRVDiscDefault::1201 
