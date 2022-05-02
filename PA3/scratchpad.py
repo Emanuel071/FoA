@@ -22,6 +22,7 @@ while s != total or i < 10:
     total = m + len(B_new)
     if total == s:
         B = B_new
+        n = len(B) 
         break
     if total > s:
         break
@@ -29,5 +30,6 @@ while s != total or i < 10:
     i += 1
 
 print(A)
+print(m)
 print(B)
-
+print(n)
