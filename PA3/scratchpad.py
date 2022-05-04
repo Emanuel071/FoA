@@ -6,9 +6,21 @@ m = len(A)            # A is down the rows, indexed by i, starting 1
 n = len(B)            # B goes across cols, indexed by j, starting 1
 s = len(S)
 
-if S.index(1) == 0:
-    S.replace
+print(S)
 
+print(S[0])
+print(type(S[0]))
+
+# print(S[0])
+while S[0] == "0":
+    S = S[ 1 : :]
+    if S[0] == "1":
+        break
+    
+
+
+print(S)
+'''
 total = m + n
 print(s)
 print(total)
@@ -36,3 +48,4 @@ i = 0
 # print(m)
 # print(B)
 # print(n)
+'''
