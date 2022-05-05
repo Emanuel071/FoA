@@ -1,3 +1,4 @@
+'''
 A ="101"
 B ="01"
 S = "000010011011"
@@ -20,6 +21,34 @@ while S[0] == "0":
 
 
 print(S)
+'''
+
+A ="101"
+B ="01"
+S = "100110110000"
+    
+m = len(A)            # A is down the rows, indexed by i, starting 1
+n = len(B)            # B goes across cols, indexed by j, starting 1
+s = len(S)
+
+print(S)
+
+print(S[s-1])
+print(S[ : (s-1)])
+print(type(S[s-1]))
+
+i = 1
+# print(S[0])
+while S[s-1] == "0":
+    S = S[: (s-1)]
+    s = len(S)
+    if S[s-1] == "1":
+        break
+
+
+print(S)
+
+
 '''
 total = m + n
 print(s)
